@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wawos/Screens/widgets/phone_number_input.dart';
@@ -150,6 +151,21 @@ class _LandingPageState extends State<LandingPage> with WidgetsBindingObserver {
                 ? const Text('')
                 : const Text('WAWOS'),
         actions: [
+          /// Link to the Github Repository
+          IconButton(
+            icon: const Icon(FontAwesomeIcons.github),
+            onPressed: () async {
+              if (await canLaunchUrl(
+                  Uri.parse('https://github.com/Akshay-akkay/wawos'))) {
+                await launchUrl(
+                  Uri.parse('https://github.com/Akshay-akkay/wawos'),
+                );
+              } else {
+                throw 'Could not launch';
+              }
+            },
+          ),
+
           IconButton(
             icon: Icon(
               ThemeUtilities.getTheme(context) == ThemeMode.dark
